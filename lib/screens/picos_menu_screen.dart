@@ -16,6 +16,8 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:picos/screens/family_members_screen.dart';
+import 'package:picos/screens/physicians_screen.dart';
 
 /// This is the screen a user should see when prompted to provide some
 /// information about their health status.
@@ -23,74 +25,81 @@ class PicosMenu extends StatelessWidget {
   // ignore: public_member_api_docs
   const PicosMenu({Key? key}) : super(key: key);
 
+
+  // TODO: Internationalize every string
   @override
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(15.0),
-      children: const <Widget> [
-        Text(
-          'PLACEHOLDER',
-          style: TextStyle(
-            fontWeight: FontWeight.bold
-          )
-        ),
-        SizedBox(height: 20),
-        ListTile(
+      children: <Widget>[
+        const Text('Meine Gesundheit',
+            style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 20),
+        const ListTile(
           leading: Icon(Icons.insights),
-          title: Text('Sun'),
+          title: Text('Werte'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
-        ListTile(
+        const ListTile(
           leading: Icon(Icons.medication),
-          title: Text('Moon'),
+          title: Text('Medikationsplan'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
         ListTile(
-          leading: Icon(Icons.groups),
-          title: Text('Star'),
-          trailing: Icon(Icons.keyboard_arrow_right),
+          leading: const Icon(Icons.groups),
+          title: const Text('BehandlerInnen'),
+          trailing: const Icon(Icons.keyboard_arrow_right),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (BuildContext context) => const Physicians(),
+            ),
+          ),
         ),
         ListTile(
-          leading: Icon(Icons.people),
-          title: Text('Star'),
-          trailing: Icon(Icons.keyboard_arrow_right),
+          leading: const Icon(Icons.people),
+          title: const Text('Angehörige'),
+          trailing: const Icon(Icons.keyboard_arrow_right),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute<Widget>(
+              builder: (BuildContext context) => const FamilyMembers(),
+            ),
+          ),
         ),
-        ListTile(
+        const ListTile(
           leading: Icon(Icons.description),
-          title: Text('Star'),
+          title: Text('Dokumente'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
-        SizedBox(height: 20,),
-        Text(
-          'PLACEHOLDER',
-          style: TextStyle(
-            fontWeight: FontWeight.bold
-          )
+        const SizedBox(
+          height: 20,
         ),
-        SizedBox(height: 20),
-        ListTile(
+        const Text('Mehr', style: TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 20),
+        const ListTile(
           leading: Icon(Icons.notifications),
-          title: Text('Sun'),
+          title: Text('Benachrichtigungen'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
-        ListTile(
+        const ListTile(
           leading: Icon(Icons.settings),
-          title: Text('Moon'),
+          title: Text('Profil'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
-        ListTile(
+        const ListTile(
           leading: Icon(Icons.lock),
-          title: Text('Star'),
+          title: Text('Datenschutzhinweise'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
-        ListTile(
+        const ListTile(
           leading: Icon(Icons.gavel),
-          title: Text('Star'),
+          title: Text('Impressum'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
-        ListTile(
+        const ListTile(
           leading: Icon(Icons.logout),
-          title: Text('Star'),
+          title: Text('Ausloggen'),
           trailing: Icon(Icons.keyboard_arrow_right),
         ),
       ],

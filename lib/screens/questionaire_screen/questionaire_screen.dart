@@ -41,11 +41,8 @@ class QuestionaireScreen extends StatelessWidget {
         ),
         QuestionaireCard(
           question: 'Are you feeling well today?',
-          answers: <int, String> {
-            1: 'Feeling great! :)',
-            2: 'Feeling ok'
-          },
-        )
+          answers: <int, String>{1: 'Feeling great! :)', 2: 'Feeling ok'},
+        ),
       ],
     );
   }
