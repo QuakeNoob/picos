@@ -51,7 +51,7 @@ class _GraphState extends State<GraphSection> {
               ElevatedButton(onPressed: () => null, child: Text('asdf')),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 250,
             child: _BarChart(),
           ),
@@ -162,7 +162,7 @@ class _BarChart extends StatelessWidget {
         show: false,
       );
 
-  final _barsGradient = const LinearGradient(
+  final LinearGradient _barsGradient = const LinearGradient(
     colors: [
       Colors.lightBlueAccent,
       Colors.greenAccent,

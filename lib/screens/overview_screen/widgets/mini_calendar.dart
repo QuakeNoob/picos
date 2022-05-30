@@ -21,6 +21,8 @@ import 'package:intl/intl.dart';
 
 // TODO: add some configuration, maybe even hard coded
 // TODO: make widget follow global theme setting
+// TODO: document
+// TODO: make it less ugly
 
 class MiniCalendar extends StatelessWidget {
   MiniCalendar({Key? key}) : super(key: key);
@@ -39,8 +41,8 @@ class MiniCalendar extends StatelessWidget {
             border: Border.all(),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(5),
-              topRight: Radius.circular(5)
-            )
+              topRight: Radius.circular(5),
+            ),
           ),
           child: Center(
             child: Text(
@@ -48,10 +50,11 @@ class MiniCalendar extends StatelessWidget {
                 .E(
                   Localizations
                   .localeOf(context)
-                  .toString())
-                .format(_dateTime)
-            )
-          )
+                  .toString(),
+                )
+                .format(_dateTime),
+            ),
+          ),
         ),
         Container(
           width: 100,
@@ -61,16 +64,16 @@ class MiniCalendar extends StatelessWidget {
             color: Colors.white,
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(5),
-              bottomRight: Radius.circular(5)
+              bottomRight: Radius.circular(5),
             ),
-            border: Border.all()
+            border: Border.all(),
           ),
           child: Center(
             child: Text(
                 _dateTime.day.toString(),
                 textScaleFactor: 4,
-              )
-            )
+              ),
+            ),
         ),
       ],
     );

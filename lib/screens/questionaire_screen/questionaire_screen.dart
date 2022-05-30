@@ -26,24 +26,38 @@ class QuestionaireScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      verticalDirection: VerticalDirection.down,
-      children: const <Widget> [
-        QuestionaireCard(
-          question: 'What food do you like the most?',
-          answers: <int, String> {
-            1: 'Pizza',
-            2: 'Sushi',
-            3: 'Curry'
-          }
-        ),
-        QuestionaireCard(
-          question: 'Are you feeling well today?',
-          answers: <int, String>{1: 'Feeling great! :)', 2: 'Feeling ok'},
-        ),
-      ],
+    return Scaffold(
+      appBar: AppBar(),
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
+          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
+          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
+          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
+          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
+        ],
+      )
     );
+
+    //  Column(
+    //    crossAxisAlignment: CrossAxisAlignment.center,
+    //    mainAxisSize: MainAxisSize.min,
+    //    verticalDirection: VerticalDirection.down,
+    //    children: const <Widget> [
+    //      QuestionaireCard(
+    //        question: 'What food do you like the most?',
+    //        answers: <int, String> {
+    //          1: 'Pizza',
+    //          2: 'Sushi',
+    //          3: 'Curry'
+    //        },
+    //      ),
+    //      QuestionaireCard(
+    //        question: 'Are you feeling well today?',
+    //        answers: <int, String>{1: 'Feeling great! :)', 2: 'Feeling ok'},
+    //      ),
+    //    ],
+    //  );
   }
 }

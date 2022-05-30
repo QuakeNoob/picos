@@ -16,9 +16,9 @@
 *  along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:picos/screens/overview_screen/widgets/mini_calendar.dart';
+import 'package:picos/screens/questionaire_screen/questionaire_screen.dart';
 
 /// This class implements the top section of the 'overview'.
 class InputCardSection extends StatelessWidget {
@@ -46,9 +46,10 @@ class InputCardSection extends StatelessWidget {
               Stack(
                 alignment: Alignment.center,
                 children: <Widget>[
-                  Image.network(
-                      'https://www.matawebsite.com/images/blog/436_flutter_flexible_widget.jpg',
-                  ),
+                  Image.asset('assets/Eingabe_Start.png'),
+                  //Image.network(
+                  //    'https://www.matawebsite.com/images/blog/436_flutter_flexible_widget.jpg',
+                  //),
                   Align(
                     heightFactor: 1,
                     widthFactor: 3,
@@ -58,10 +59,17 @@ class InputCardSection extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              const IntrinsicWidth(
+              IntrinsicWidth(
                 stepWidth: double.infinity,
                 child: ElevatedButton(
-                  onPressed: null,
+                  onPressed: () {
+                    Navigator.push(
+                      context, MaterialPageRoute<Widget>(
+                        builder: 
+                          (BuildContext context) => const QuestionaireScreen(),
+                      ),
+                    );
+                  },
                   child: Text('PLACEHOLDER'),
                 ),
               )

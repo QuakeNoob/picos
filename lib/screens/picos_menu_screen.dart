@@ -33,7 +33,7 @@ class PicosMenu extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       children: <Widget>[
         const Text('Meine Gesundheit',
-            style: TextStyle(fontWeight: FontWeight.bold)),
+            style: TextStyle(fontWeight: FontWeight.bold),),
         const SizedBox(height: 20),
         const ListTile(
           leading: Icon(Icons.insights),

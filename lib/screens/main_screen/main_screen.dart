@@ -37,7 +37,7 @@ class MainScreen extends StatelessWidget {
       },
       // TODO: implement a proper global theme
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lime,
       ),
       home: const BottomBar(title: 'PICOS'),
     );

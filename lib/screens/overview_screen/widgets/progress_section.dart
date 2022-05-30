@@ -47,10 +47,13 @@ class ProgressSection extends StatelessWidget {
             alignment: Alignment.center,
             children: <Widget>[
               const SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: CircularProgressIndicator(
-                      color: Colors.amber, value: 0.96)),
+                width: 100,
+                height: 100,
+                child: CircularProgressIndicator(
+                  color: Colors.lime,
+                  value: 0.96,
+                ),
+              ),
               Text(
                 (progressPercentage * 100).round().toString() + ' %',
                 style: const TextStyle(color: Colors.white),

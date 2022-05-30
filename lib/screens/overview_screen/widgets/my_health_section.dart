@@ -17,6 +17,8 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:picos/screens/physicians_screen.dart';
+import 'package:picos/screens/family_members_screen.dart';
 
 class MyHealthSection extends StatelessWidget {
   MyHealthSection({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class MyHealthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -40,7 +42,7 @@ class MyHealthSection extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Center(
             child: Wrap(
               alignment: WrapAlignment.center,
@@ -52,21 +54,105 @@ class MyHealthSection extends StatelessWidget {
                   color: Colors.lime,
                   width: 180,
                   height: 180,
+                  child: Column(
+                    children: <Widget>[
+                      Flexible(
+                        flex: 3,
+                        child: Image.asset('assets/Medikationsplan.png'),
+                      ),
+                      const Flexible(
+                        flex: 2,
+                        child: Center(
+                          child: Text(
+                            'Mein Medikationsplan',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
-                  color: Colors.black26,
+                  color: Colors.lime,
                   width: 180,
                   height: 180,
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Physicians(),
+                      ),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Flexible(
+                          flex: 3,
+                          child: Image.asset('assets/BehandlerInnen.png'),
+                        ),
+                        const Flexible(
+                          flex: 2,
+                          child: Center(
+                            child: Text(
+                              'Meine BehandlerInnen',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Container(
-                  color: Colors.black45,
+                  color: Colors.lime,
                   width: 180,
                   height: 180,
+                  child: GestureDetector(
+                    onTap: () => Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (context) => FamilyMembers(),
+                      ),
+                    ),
+                    child: Column(
+                      children: <Widget>[
+                        Flexible(
+                          flex: 3,
+                          child: Image.asset('assets/Angehoerige.png'),
+                        ),
+                        const Flexible(
+                          flex: 2,
+                          child: Center(
+                            child: Text(
+                              'Meine Angehörige',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Container(
-                  color: Colors.black87,
+                  color: Colors.lime,
                   width: 180,
                   height: 180,
+                  child: Column(
+                    children: <Widget>[
+                      Flexible(
+                        flex: 3,
+                        child: Image.asset('assets/Dokumente.png'),
+                      ),
+                      const Flexible(
+                        flex: 2,
+                        child: Center(
+                          child: Text(
+                            'Meine Dokumente',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

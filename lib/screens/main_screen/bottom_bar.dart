@@ -49,9 +49,9 @@ class _BottomBarState extends State<BottomBar> {
 
   // TODO: refactor and remove this List
   final List<String> _appBarTitles = <String>[
-    'overview',
-    'inbox',
-    'calender',
+    'Overview',
+    'Inbox',
+    'Calendar',
     'MyPicos'
   ];
 
@@ -83,10 +83,17 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromRGBO(25, 102, 117, 1.0),
-          title: Center(child: Text(_appBarTitles[selectedIndex]))),
+        // TODO: remove this hack
+        backgroundColor: selectedIndex == 3 ? Colors.green : Colors.white,
+        title: Center(
+          child: Text(
+            _appBarTitles[selectedIndex],
+            style: const TextStyle(color: Colors.black),
+          ),
+        ),
+      ),
       body: Center(
-        // TODO: move this widget list outside of the build function, 
+        // TODO: move this widget list outside of the build function,
         // TODO: implement a function that returns a title instead
         child: <Widget>[
           const OverviewScreen(),
@@ -112,23 +119,26 @@ class _BottomBarState extends State<BottomBar> {
             label: Text(AppLocalizations.of(context)!.overview).data,
           ),
           BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.mail_outline,
-                color: Colors.black,
-              ),
-              label: Text(AppLocalizations.of(context)!.inbox).data),
+            icon: const Icon(
+              Icons.mail_outline,
+              color: Colors.black,
+            ),
+            label: Text(AppLocalizations.of(context)!.inbox).data,
+          ),
           BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.calendar_month_outlined,
-                color: Colors.black,
-              ),
-              label: Text(AppLocalizations.of(context)!.calendar).data),
+            icon: const Icon(
+              Icons.calendar_month_outlined,
+              color: Colors.black,
+            ),
+            label: Text(AppLocalizations.of(context)!.calendar).data,
+          ),
           BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.chat_bubble_outline,
-                color: Colors.black,
-              ),
-              label: Text(AppLocalizations.of(context)!.myPicos).data),
+            icon: const Icon(
+              Icons.chat_bubble_outline,
+              color: Colors.black,
+            ),
+            label: Text(AppLocalizations.of(context)!.myPicos).data,
+          ),
         ],
         type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex,
