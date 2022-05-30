@@ -18,9 +18,13 @@
 
 import 'package:flutter/material.dart';
 
+/// Widget which is used for displaying
+/// the progress bar in the corresponding section on the "overview"-screen
 class ProgressSection extends StatelessWidget {
+  // ignore: public_member_api_docs
   const ProgressSection({Key? key}) : super(key: key);
 
+  /// Declarion of the value (percentage) which is shown on the progress bar
   final double progressPercentage = 0.95;
 
   @override
@@ -33,14 +37,22 @@ class ProgressSection extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              const Text('lorem ipsum dolor sit amet',
-                  style: TextStyle(color: Colors.white)),
+              const Text(
+                'lorem ipsum dolor sit amet',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
               ConstrainedBox(
                 constraints:
                     const BoxConstraints(minHeight: 20, maxHeight: 100),
               ),
               ElevatedButton(
-                  child: const Text('PLACEHOLDER'), onPressed: () => null)
+                child: const Text('PLACEHOLDER'),
+                onPressed: () {
+                  return;
+                },
+              )
             ],
           ),
           Stack(
@@ -55,7 +67,7 @@ class ProgressSection extends StatelessWidget {
                 ),
               ),
               Text(
-                (progressPercentage * 100).round().toString() + ' %',
+                '${(progressPercentage * 100).round()} %',
                 style: const TextStyle(color: Colors.white),
                 textScaleFactor: 2,
               )

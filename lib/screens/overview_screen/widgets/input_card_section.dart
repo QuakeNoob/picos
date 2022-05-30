@@ -22,6 +22,7 @@ import 'package:picos/screens/questionaire_screen/questionaire_screen.dart';
 
 /// This class implements the top section of the 'overview'.
 class InputCardSection extends StatelessWidget {
+  // ignore: public_member_api_docs
   const InputCardSection({Key? key}) : super(key: key);
 
   @override

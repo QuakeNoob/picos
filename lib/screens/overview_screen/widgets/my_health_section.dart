@@ -20,8 +20,10 @@ import 'package:flutter/material.dart';
 import 'package:picos/screens/physicians_screen.dart';
 import 'package:picos/screens/family_members_screen.dart';
 
+/// Widget which displays health-related information
 class MyHealthSection extends StatelessWidget {
-  MyHealthSection({Key? key}) : super(key: key);
+  // ignore: public_member_api_docs
+  const MyHealthSection({Key? key}) : super(key: key);
 
   // final double h = MediaQuery.of(context).size.height;
 
@@ -33,7 +35,12 @@ class MyHealthSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const Text('PLACEHOLDER', style: TextStyle(color: Colors.white)),
+          const Text(
+            'PLACEHOLDER',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
           // This is a horizontal line
           // be my guest to make it better if you know how
           SizedBox(

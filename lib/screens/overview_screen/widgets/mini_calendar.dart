@@ -24,7 +24,9 @@ import 'package:intl/intl.dart';
 // TODO: document
 // TODO: make it less ugly
 
+/// Widget which displays a calendar on the "overview"-screen
 class MiniCalendar extends StatelessWidget {
+  // ignore: public_member_api_docs
   MiniCalendar({Key? key}) : super(key: key);
 
   final DateTime _dateTime = DateTime.now();
@@ -32,7 +34,7 @@ class MiniCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget> [
+      children: <Widget>[
         Container(
           constraints: const BoxConstraints.expand(width: 100, height: 30),
           //color: Colors.blue,
@@ -46,13 +48,9 @@ class MiniCalendar extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              DateFormat
-                .E(
-                  Localizations
-                  .localeOf(context)
-                  .toString(),
-                )
-                .format(_dateTime),
+              DateFormat.E(
+                Localizations.localeOf(context).toString(),
+              ).format(_dateTime),
             ),
           ),
         ),
