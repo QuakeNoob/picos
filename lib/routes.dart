@@ -19,9 +19,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:picos/screens/add_family_member_screen.dart';
 import 'package:picos/screens/add_medication_screen/add_medication_screen.dart';
 import 'package:picos/screens/add_physician_screen.dart';
+import 'package:picos/screens/study_nurse_screen/configuration_screen/configuration_finished_screen.dart';
+import 'package:picos/screens/study_nurse_screen/configuration_screen/configuration_pages.dart';
+import 'package:picos/screens/study_nurse_screen/configuration_screen/configuration_screen.dart';
 import 'package:picos/screens/family_members_screen.dart';
 import 'package:picos/screens/main_screen/bottom_bar.dart';
 import 'package:picos/screens/my_medications_screen/my_medications_screen.dart';
+import 'package:picos/screens/overview_screen/overview_screen.dart';
 import 'package:picos/screens/physicians_screen.dart';
 import 'package:picos/screens/study_nurse_screen/study_nurse_screen.dart';
 
@@ -39,6 +43,10 @@ class Routes {
       '/family-members': (BuildContext ctx) => const FamilyMembersScreen(),
       '/mainscreen': (BuildContext ctx) => const BottomBar(title: 'PICOS',),
       '/studynursescreen': (BuildContext ctx) => const StudyNurseScreen(),
+      '/configuration-screen': (BuildContext ctx) => const ConfigurationScreen(),
+      '/configuration-pages': (BuildContext ctx) => const ConfigurationPages(),
+      '/configuration-finish-screen': (BuildContext ctx) => const ConfigurationFinishedScreen(),
+      '/overview': (BuildContext ctx) => const OverviewScreen(),
     };
   }
 
