@@ -1,4 +1,4 @@
-/*   This file is part of Picos, a health trcking mobile app
+/*   This file is part of Picos, a health tracking mobile app
 *    Copyright (C) 2022 Healthcare IT Solutions GmbH
 *
 *    This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ import 'package:picos/screens/questionaire_screen/questionaire_card.dart';
 /// This is the screen a user should see when prompted to provide some
 /// information about their health status.
 class QuestionaireScreen extends StatelessWidget {
-  // ignore: public_member_api_docs
+  /// QuestionaireScreen constructor
   const QuestionaireScreen({Key? key}) : super(key: key);
 
   @override
@@ -30,14 +30,29 @@ class QuestionaireScreen extends StatelessWidget {
       appBar: AppBar(),
       body: PageView(
         scrollDirection: Axis.horizontal,
-        children: [
-          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
-          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
-          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
-          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
-          QuestionaireCard(question: 'HAI', answers: {1: 'hai', 2: 'asdf'}),
+        children: const <QuestionaireCard>[
+          QuestionaireCard(
+            question: 'HAI',
+            answers: <int, String>{1: 'hai', 2: 'asdf'},
+          ),
+          QuestionaireCard(
+            question: 'HAI',
+            answers: <int, String>{1: 'hai', 2: 'asdf'},
+          ),
+          QuestionaireCard(
+            question: 'HAI',
+            answers: <int, String>{1: 'hai', 2: 'asdf'},
+          ),
+          QuestionaireCard(
+            question: 'HAI',
+            answers: <int, String>{1: 'hai', 2: 'asdf'},
+          ),
+          QuestionaireCard(
+            question: 'HAI',
+            answers: <int, String>{1: 'hai', 2: 'asdf'},
+          ),
         ],
-      )
+      ),
     );
 
     //  Column(

@@ -17,14 +17,15 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Widget which is used for displaying
 /// the progress bar in the corresponding section on the "overview"-screen
 class ProgressSection extends StatelessWidget {
-  // ignore: public_member_api_docs
+  /// ProgressSection constructor
   const ProgressSection({Key? key}) : super(key: key);
 
-  /// Declarion of the value (percentage) which is shown on the progress bar
+  /// Declaration of the value (percentage) which is shown on the progress bar
   final double progressPercentage = 0.95;
 
   @override
@@ -37,9 +38,9 @@ class ProgressSection extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              const Text(
-                'lorem ipsum dolor sit amet',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.achievedValues,
+                style: const TextStyle(
                   color: Colors.white,
                 ),
               ),
@@ -48,7 +49,7 @@ class ProgressSection extends StatelessWidget {
                     const BoxConstraints(minHeight: 20, maxHeight: 100),
               ),
               ElevatedButton(
-                child: const Text('PLACEHOLDER'),
+                child: Text(AppLocalizations.of(context)!.proceed),
                 onPressed: () {
                   return;
                 },
@@ -62,7 +63,7 @@ class ProgressSection extends StatelessWidget {
                 width: 100,
                 height: 100,
                 child: CircularProgressIndicator(
-                  color: Colors.lime,
+                  color: Colors.green,
                   value: 0.96,
                 ),
               ),

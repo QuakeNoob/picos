@@ -1,4 +1,4 @@
-/*   This file is part of Picos, a health trcking mobile app
+/*   This file is part of Picos, a health tracking mobile app
 *    Copyright (C) 2022 Healthcare IT Solutions GmbH
 *
 *    This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ import 'package:picos/screens/picos_menu_screen.dart';
 /// used by the build method of the State. Fields in a Widget subclass are
 /// always marked "final".
 class BottomBar extends StatefulWidget {
-  /// Constructor
+  /// BottomBar constructor
   const BottomBar({required this.title, Key? key}) : super(key: key);
 
   /// home screen title
@@ -51,22 +51,18 @@ class _BottomBarState extends State<BottomBar> {
   final List<String> _appBarTitles = <String>[
     'Overview',
     'Inbox',
-    'Calendar',
+    'Calender',
     'MyPicos'
   ];
 
-  // TODO: refactor the appBarTitiles to return localized messages
+  // TODO: refactor the appBarTitle to return localized messages
   String appBarTitle(BuildContext context, int index) {
     final List<String> appBarTitles = <String>[
-      'overview',
-      'inbox',
-      'calender',
+      'Overview',
+      'Inbox',
+      'Calender',
       'MyPicos'
     ];
-
-    if (index > appBarTitles.length - 1 || index < 0) {
-      throw Exception('Out of bounds');
-    }
 
     return appBarTitles[index];
   }
@@ -88,7 +84,6 @@ class _BottomBarState extends State<BottomBar> {
         title: Center(
           child: Text(
             _appBarTitles[selectedIndex],
-            style: const TextStyle(color: Colors.black),
           ),
         ),
       ),

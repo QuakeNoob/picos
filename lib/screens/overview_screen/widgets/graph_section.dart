@@ -18,10 +18,11 @@
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Widget which shows a graph
 class GraphSection extends StatefulWidget {
-  // ignore: public_member_api_docs
+  /// GraphSection constructor
   const GraphSection({Key? key}) : super(key: key);
 
   @override
@@ -36,9 +37,11 @@ class _GraphState extends State<GraphSection> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
-            child: Text('PLACEHOLDER'),
+            child: Text(
+              AppLocalizations.of(context)!.myMedicalData,
+            ),
           ),
           Container(
             color: Colors.black,
@@ -51,25 +54,34 @@ class _GraphState extends State<GraphSection> {
                 onPressed: () {
                   return;
                 },
-                child: const Text('asdf'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                ),
+                child: Text(
+                  '7 ${AppLocalizations.of(context)!.days}',
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
                   return;
                 },
-                child: const Text('asdf'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                ),
+                child: Text(
+                  '1 ${AppLocalizations.of(context)!.month}',
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
                   return;
                 },
-                child: const Text('asdf'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  return;
-                },
-                child: const Text('asdf'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                ),
+                child: Text(
+                  '3 ${AppLocalizations.of(context)!.months}',
+                ),
               ),
             ],
           ),

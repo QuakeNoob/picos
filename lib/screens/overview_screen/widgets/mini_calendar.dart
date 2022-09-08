@@ -26,7 +26,7 @@ import 'package:intl/intl.dart';
 
 /// Widget which displays a calendar on the "overview"-screen
 class MiniCalendar extends StatelessWidget {
-  // ignore: public_member_api_docs
+  /// MiniCalendar constructor
   MiniCalendar({Key? key}) : super(key: key);
 
   final DateTime _dateTime = DateTime.now();
@@ -36,10 +36,17 @@ class MiniCalendar extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          constraints: const BoxConstraints.expand(width: 100, height: 30),
-          //color: Colors.blue,
+          constraints: const BoxConstraints.expand(
+            width: 100,
+            height: 30,
+          ),
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: const Color.fromRGBO(
+              25,
+              102,
+              117,
+              1.0,
+            ),
             border: Border.all(),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(5),
@@ -51,13 +58,16 @@ class MiniCalendar extends StatelessWidget {
               DateFormat.E(
                 Localizations.localeOf(context).toString(),
               ).format(_dateTime),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
         Container(
           width: 100,
           height: 70,
-          //color: Colors.white,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: const BorderRadius.only(

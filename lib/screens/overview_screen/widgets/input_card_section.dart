@@ -18,11 +18,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:picos/screens/overview_screen/widgets/mini_calendar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:picos/screens/questionaire_screen/questionaire_screen.dart';
 
 /// This class implements the top section of the 'overview'.
 class InputCardSection extends StatelessWidget {
-  // ignore: public_member_api_docs
+  /// InputCardSection constructor
   const InputCardSection({Key? key}) : super(key: key);
 
   @override
@@ -36,21 +37,25 @@ class InputCardSection extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(children: const <Widget>[Text('PLACEHOLDER')]),
-              // Ok, this is a horizontal line, if there are better solutions
-              // to this, be my guest to refactor this.
-              Container(
-                color: Colors.black,
-                height: 1,
+              Row(
+                children: <Widget>[
+                  Text(
+                    AppLocalizations.of(context)!.myEntries,
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
+              const Divider(
+                height: 1,
+                color: Colors.black,
+                thickness: 1,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
               Stack(
-                alignment: Alignment.center,
+                alignment: Alignment.topLeft,
                 children: <Widget>[
                   Image.asset('assets/Eingabe_Start.png'),
-                  //Image.network(
-                  //    'https://www.matawebsite.com/images/blog/436_flutter_flexible_widget.jpg',
-                  //),
                   Align(
                     heightFactor: 1,
                     widthFactor: 3,
@@ -65,13 +70,19 @@ class InputCardSection extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                      context, MaterialPageRoute<Widget>(
-                        builder: 
-                          (BuildContext context) => const QuestionaireScreen(),
+                      context,
+                      MaterialPageRoute<Widget>(
+                        builder: (BuildContext context) =>
+                            const QuestionaireScreen(),
                       ),
                     );
                   },
-                  child: Text('PLACEHOLDER'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context)!.startEntry,
+                  ),
                 ),
               )
             ],

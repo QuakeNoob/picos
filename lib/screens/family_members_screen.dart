@@ -1,4 +1,4 @@
-/*   This file is part of Picos, a health trcking mobile app
+/*   This file is part of Picos, a health tracking mobile app
 *    Copyright (C) 2022 Healthcare IT Solutions GmbH
 *
 *    This program is free software: you can redistribute it and/or modify
@@ -16,19 +16,28 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:picos/screens/family_members_add_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:picos/widgets/picos_add_mono_button_bar.dart';
+
+import '../widgets/picos_list_card.dart';
 
 /// builds 'Column' as a parent widget for the given cards
 class MyCard extends StatelessWidget {
-  // ignore: public_member_api_docs
-  MyCard({Key? key}) : super(key: key) {
-    // TODO: Internatilize it
+  /// MyCard constructor
+  const MyCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    /// Declaration of the List-variable 'cards' for building
+    /// the main components of the UI of this screen
+    List<CustomCard> cards;
+
     /// A fixed list of Strings denoting the type of family members
     List<String> familyMemberType = <String>[
-      'Vater',
-      'Mutter',
-      'Bruder',
-      'Schwester',
+      AppLocalizations.of(context)!.father,
+      AppLocalizations.of(context)!.mother,
+      AppLocalizations.of(context)!.brother,
+      AppLocalizations.of(context)!.sister,
     ];
 
     /// generates a list of CustomCard-Widgets
@@ -38,14 +47,7 @@ class MyCard extends StatelessWidget {
         memberType: familyMemberType.elementAt(index),
       ),
     );
-  }
 
-  /// Declaration of the List-variable 'cards' for building
-  /// the main components of the UI of this screen
-  late final List<CustomCard> cards;
-
-  @override
-  Widget build(BuildContext context) {
     return Column(
       children: cards,
     );
@@ -55,7 +57,7 @@ class MyCard extends StatelessWidget {
 /// This class serves for customizing the card properties showing information
 /// about the corresponding family member
 class CustomCard extends StatelessWidget {
-  // ignore: public_member_api_docs
+  /// CustomCard constructor
   const CustomCard({
     required this.memberType,
     Key? key,
@@ -67,138 +69,23 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(20),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-      ),
-      clipBehavior: Clip.none,
-      child: Padding(
-        padding: const EdgeInsets.all(2.0),
+    return PicosListCard(
+      title: memberType,
+      child: SizedBox(
+        width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            ListTile(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              tileColor: const Color.fromRGBO(
-                25,
-                102,
-                117,
-                1.0,
-              ),
-              textColor: Colors.white,
-              title: Text(
-                memberType,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+            Text(
+              '${AppLocalizations.of(context)!.mr} Max Mustermann',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 16,
-                top: 20,
-                right: 16,
-                bottom: 15,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const <Widget>[
-                  Text(
-                    'Herr Max Mustermann',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text('Musterstraße 1'),
-                  Text('00000 Musterstadt'),
-                  Text('Tel. +49 000 12 34 56'),
-                  Text('name@webmail.de'),
-                ],
-              ),
-            ),
-            BottomAppBar(
-              color: Colors.transparent,
-              elevation: 0,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: SizedBox(
-                        height: 44,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // TODO: Implement here
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color.fromRGBO(
-                              232,
-                              241,
-                              243,
-                              1,
-                            ),
-                            shadowColor: Colors.transparent,
-                          ),
-                          child: const Text(
-                            // TODO: Internatilize it
-                            'Bearbeiten',
-                            style: TextStyle(
-                              color: Color.fromRGBO(
-                                95,
-                                115,
-                                131,
-                                1,
-                              ),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: SizedBox(
-                        height: 44,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // TODO: Implement here
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color.fromRGBO(
-                              232,
-                              241,
-                              243,
-                              1,
-                            ),
-                            shadowColor: Colors.transparent,
-                          ),
-                          child: const Text(
-                            // TODO: Internatilize it
-                            'Löschen',
-                            style: TextStyle(
-                              color: Color.fromRGBO(
-                                95,
-                                115,
-                                131,
-                                1,
-                              ),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const Text('Musterstraße 1'),
+            const Text('00000 Musterstadt'),
+            const Text('Tel. +49 000 12 34 56'),
+            const Text('name@webmail.de'),
           ],
         ),
       ),
@@ -207,16 +94,15 @@ class CustomCard extends StatelessWidget {
 }
 
 /// This is the screen in which a user will see a list of his family members
-class FamilyMembers extends StatelessWidget {
-  // ignore: public_member_api_docs
-  const FamilyMembers({Key? key}) : super(key: key);
+class FamilyMembersScreen extends StatelessWidget {
+  /// FamilyMembers constructor
+  const FamilyMembersScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // TODO: Internatilize it
-        title: const Text('Meine Angehörigen'),
+        title: Text(AppLocalizations.of(context)!.familyMembers),
         backgroundColor: const Color.fromRGBO(
           25,
           102,
@@ -232,64 +118,11 @@ class FamilyMembers extends StatelessWidget {
             243,
             1,
           ),
-          child: MyCard(),
+          child: const MyCard(),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(5),
-                child: Container(
-                  height: 44,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: <Color>[
-                        Color.fromRGBO(
-                          149,
-                          193,
-                          31,
-                          1,
-                        ),
-                        Color.fromRGBO(
-                          110,
-                          171,
-                          39,
-                          1,
-                        ),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute<Widget>(
-                        builder: (BuildContext context) =>
-                            const FamilyMembersAdd(),
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      shadowColor: Colors.transparent,
-                    ),
-                    child: const Text(
-                      // TODO: Internatilize it
-                      'Hinzufügen',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+      bottomNavigationBar: const PicosAddMonoButtonBar(
+        route: '/add-family-member',
       ),
     );
   }
