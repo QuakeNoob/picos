@@ -22,15 +22,38 @@ import 'dart:async';
 import 'package:picos/api/medications_api.dart';
 import 'package:picos/models/medication.dart';
 
+import '../util/backend.dart';
+
 /// API for storing medications at local storage. Currently a placeholder.
-class LocalStorageMedicationsApi extends MedicationsApi {
+class BackendMedicationsApi extends MedicationsApi {
   List<Medication> _medicationsList = <Medication>[];
 
   final StreamController<List<Medication>> _medicationsController =
       StreamController<List<Medication>>();
 
   @override
-  Stream<List<Medication>> getMedications() {
+  Future<Stream<List<Medication>>> getMedications() async {
+    BackendResponse response = await Backend.getAll(Medication.databaseTable);
+
+    if (!response.success && response.error != null) {
+      return Stream<List<Medication>>.error(response.error!);
+    }
+
+    for (BackendObject object in response.results) {
+      _medicationsList.add(
+        Medication(
+          compound: object.get('MedicalProduct'),
+          morning: object.get('Morning').toDouble(),
+          noon: object.get('Noon').toDouble(),
+          evening: object.get('Evening').toDouble(),
+          night: object.get('AtNight').toDouble(),
+          objectId: object.objectId,
+          createdAt: object.createdAt,
+          updatedAt: object.updatedAt,
+        ),
+      );
+    }
+
     return _medicationsController.stream.asBroadcastStream(
       onListen: (StreamSubscription<List<Medication>> subscription) {
         _dispatch();
@@ -40,7 +63,18 @@ class LocalStorageMedicationsApi extends MedicationsApi {
 
   @override
   Future<void> saveMedication(Medication medication) async {
-    final int medicationIndex = _getIndex(medication);
+    BackendResponse response = await Backend.saveObject(medication);
+
+    if (!response.success) {
+      return;
+    }
+
+    int medicationIndex = _getIndex(medication);
+    medication = medication.copyWith(
+      objectId: response.results.first.objectId,
+      updatedAt: response.results.first.updatedAt,
+      createdAt: response.results.first.createdAt,
+    );
 
     if (medicationIndex >= 0) {
       _medicationsList[medicationIndex] = medication;
@@ -56,7 +90,13 @@ class LocalStorageMedicationsApi extends MedicationsApi {
 
   @override
   Future<void> removeMedication(Medication medication) async {
-    final int medicationIndex = _getIndex(medication);
+    BackendResponse response = await Backend.removeObject(medication);
+
+    if (!response.success) {
+      return;
+    }
+
+    int medicationIndex = _getIndex(medication);
 
     _medicationsList.removeAt(medicationIndex);
     _medicationsList = <Medication>[..._medicationsList];
@@ -70,7 +110,7 @@ class LocalStorageMedicationsApi extends MedicationsApi {
 
   int _getIndex(Medication medication) {
     return _medicationsList.indexWhere(
-      (Medication element) => element.compound == medication.compound,
+      (Medication element) => element.objectId == medication.objectId,
     );
   }
 }
